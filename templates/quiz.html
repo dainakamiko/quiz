@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズアプリ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>クイズアプリ</h1>
+        
+        <div class="card">
+            <p class="quiz-counter">問題 {{ question_number }}/{{ total_questions }}</p>
+            
+            <h2>{{ question }}</h2>
+            
+            <form action="{{ url_for('answer') }}" method="post">
+                {% for option in options %}
+                <div class="option">
+                    <button type="submit" name="option" value="{{ loop.index0 }}" class="btn btn-option">
+                        {{ option }}
+                    </button>
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

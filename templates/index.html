@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズアプリ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>クイズアプリ</h1>
+        
+        <div class="card">
+            <h2>カテゴリを選択</h2>
+            
+            <form action="{{ url_for('start') }}" method="post">
+                <div class="form-group">
+                    <input type="text" id="category" name="category" placeholder="カテゴリを入力（例：地理、歴史、科学）" value="地理" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">AIでクイズを生成</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

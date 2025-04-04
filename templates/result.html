@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズアプリ - 結果</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>クイズ結果</h1>
+        
+        <div class="card">
+            <h2>{{ category }}クイズ</h2>
+            
+            <div class="result">
+                <p>あなたのスコア:</p>
+                <p class="score">{{ score }}/{{ total }}</p>
+                
+                {% if score == total %}
+                    <p class="message">素晴らしい！全問正解です！</p>
+                {% elif score >= total * 0.7 %}
+                    <p class="message">よくできました！</p>
+                {% elif score >= total * 0.4 %}
+                    <p class="message">もう少し頑張りましょう！</p>
+                {% else %}
+                    <p class="message">次回に期待しましょう！</p>
+                {% endif %}
+            </div>
+            
+            <a href="{{ url_for('index') }}" class="btn btn-primary">もう一度プレイ</a>
+        </div>
+    </div>
+</body>
+</html>
